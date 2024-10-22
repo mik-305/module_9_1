@@ -1,16 +1,9 @@
 def apply_all_func(int_list, *functions):
     results = {}
-    fun = 0
-    for fun in functions:
-        result = map(functions, int_list)
-        print(type(result))
-        print(list(result))
-    return result
+    for func in functions:
+        results[func.__name__] = func(int_list)
+    return results
 
-
-
-
-
-int_list = [11, 1, 3, 4, 9]
-print(apply_all_func(int_list, max, min))
+print(apply_all_func([6, 20, 15, 9], max, min))
+print(apply_all_func([6, 20, 15, 9], len, sum, sorted))
 
